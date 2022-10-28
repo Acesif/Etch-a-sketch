@@ -1,0 +1,5 @@
+pen color
+background color
+toggle eraser
+toggle random color
+grid size slider

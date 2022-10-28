@@ -1,0 +1,30 @@
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+.sidebar{
+    background-color: aquamarine;
+}
+.color{
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border: 1px rgba(0, 0, 0,0.2) solid;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .sketchboard{
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        cursor: pointer;
+        width: 40%;
+    }
+}
+.active{
+    background-color: yellow;
+}
