@@ -1,30 +1,22 @@
-.prevent-select {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-}
-.sidebar{
-    background-color: aquamarine;
-}
-.color{
-    background-color: white;
-    padding: 20px;
-    text-align: center;
-    border: 1px rgba(0, 0, 0,0.2) solid;
-}
-.container{
-    width: 100%;
-    height: 100vh;
+.content{
     display: flex;
     justify-content: center;
     align-items: center;
-    .sketchboard{
-        display: grid;
-        grid-template-columns: repeat(16, 1fr);
-        cursor: pointer;
-        width: 40%;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(238, 74, 74);
+    .title{
+        font-size: 4rem;
+        font-family: 'Acme', sans-serif;
     }
-}
-.active{
-    background-color: yellow;
+    h4{
+        font-family: 'Acme', sans-serif;
+    }
+    .board{
+        width: 60%;
+        height: 60%;
+        display: grid;
+        border: 2px solid black;
+        margin-bottom: 2rem;
+    }
 }

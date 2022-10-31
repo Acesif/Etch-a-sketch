@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Sketch</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <h1></h1>
-    <div class="container">
-        <div class="sidebar">
-            <h2>Etch-a-Sketch</h2>
-            <div class="options">
-                <button id="clear">Clear</button>
-                
-            </div>
+    <div class="content">
+        <div class="title"><h1>Etch-A-Sketch</h1></div>
+        <h4 class="mode">Mode: Not Coloring</h4>
+        <div class="board"></div>
+        <div class="buttons">
+            <button onclick="changeColor('Black')">Black</button>
+            <button onclick="changeColor('random')">Colorful</button>
+            <button onclick="reset()">Reset</button>
+            <button onclick="erasure()">Erase</button>
         </div>
-        <div class="sketchboard">
-            
-        </div>
+        <input type="text" placeholder="Enter canvas size" value="16" onchange="newCanvasSize(this.value)">
+        <button>Set Size</button>
     </div>
-    <script src="./index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

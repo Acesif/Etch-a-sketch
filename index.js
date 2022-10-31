@@ -1,30 +1,59 @@
-let container = document.querySelector(".sketchboard");
-let clear = document.getElementById("clear");
-let childdiv = "";
-let h1 = document.getElementsByTagName("h1");
-let activeColor = 'yellow';
-let inactiveColor = 'white';
-
-for (let index = 0; index < 64*5; index++) {
-    childdiv += `<div id = 'box-${index}'class='color prevent-select'></div>`
-}
-container.innerHTML = childdiv;
-let color = container.querySelectorAll(".color");
-
-let arr = [];
-
-color.forEach(e=>{
-    let x = e.attributes.item(0).nodeValue;
-    e.addEventListener('mouseover',function(){
-        arr.push(x);
-        e.style['background-color'] = `${activeColor}`;
-    });
-})
-clear.addEventListener("click",function(){
-    for (let index = 0; index < arr.length; index++) {
-        arr.pop();
-    }
-    color.forEach(e=>{
-        e.style['background-color'] = `${inactiveColor}`;
+let color = 'black';
+let bgc = 'white';
+let click = false;
+function populate(size){
+    let board = document.querySelector(".board");
+    let existingSq = board.querySelectorAll("div");
+    existingSq.forEach((e)=>{
+        e.remove();
     })
-});
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    for (let index = 0; index < size*size; index++) {
+        let gridbox = document.createElement("div");
+        gridbox.addEventListener("mouseover",colorbox);
+        gridbox.style['background-color'] = bgc;
+        board.insertAdjacentElement("afterbegin",gridbox);
+    }
+
+}
+populate(16);
+
+function newCanvasSize(input){
+    if(input>=1 && input <100){
+        populate(input);
+    }
+}
+function colorbox(){
+    if(click){
+        if(color === 'random'){
+            this.style['background-color'] = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`
+        }
+        else{
+            this.style['background-color'] = color;
+        }
+    }
+}
+function changeColor(choice){
+    color = choice;
+}
+function erasure(){
+    color = bgc;
+    colorbox();
+}
+function reset(){
+    let board = document.querySelector(".board");
+    let existingSq = board.querySelectorAll("div");
+    existingSq.forEach(e=>{
+        e.style['background-color'] = bgc;
+    })
+}
+document.querySelector(".board").addEventListener("click", ()=>{
+    click = !click;
+    if(click){
+        document.querySelector(".mode").textContent = 'Mode: Coloring';
+    }
+    else{
+        document.querySelector(".mode").textContent = 'Mode: Not Coloring';
+    }
+})
